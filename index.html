@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melek'in Doğum Günü</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ffe6f0);
+  overflow-x: hidden;
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.letter-box {
+  width: 90%;
+  max-width: 350px;
+  height: 400px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(255, 100, 150, 0.5);
+  backdrop-filter: blur(5px);
+}
+.letter-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  white-space: pre-line;
+}
+.cake {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  background: #ff99aa;
+  border-radius: 20px 20px 10px 10px;
+  margin-top: 20px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+.candle {
+  position: absolute;
+  width: 10px;
+  height: 40px;
+  background: #fff;
+  top: -40px;
+  left: calc(50% - 5px);
+  border-radius: 5px;
+}
+.flame {
+  width: 12px;
+  height: 20px;
+  background: radial-gradient(circle at bottom, yellow, orange);
+  border-radius: 50%;
+  position: absolute;
+  top: -20px;
+  left: calc(50% - 6px);
+  animation: flicker 0.3s infinite alternate;
+}
+@keyframes flicker {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(1.2); opacity: 0.7; }
+}
+button {
+  margin-top: 20px;
+  background: #ff66b2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button:hover { background: #ff3385; }
+.flower, .heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  animation: floatUp 6s linear infinite;
+}
+.flower {
+  background: radial-gradient(circle, #a3ffb3, #00cc66);
+  border-radius: 50%;
+}
+.heart {
+  background: red;
+  transform: rotate(45deg);
+}
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: -10px; top: 0; }
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="letter-box">
+    <div class="letter-text">
+Hayattaki en doğru iyikimsin
+Seninle her an daha güzel
+Her gülüşün dünyamı aydınlatıyor
+Seninle olmak en büyük şansım
+Varlığın ruhuma huzur veriyor
+Sen benim en değerli mucizemsin
+Her doğum günün bana mutluluk getiriyor
+Seninle her şey anlam kazanıyor
+Seni çok seviyorum zorlu günler geçirdik geçircez ama eminimki beraber çok güzel günlerede tanıklık edicez
+seni hep destekliycem seni çok seviyorum
+Doğum günün kutlu olsun hayatta hep en iyi yerlere gel beraber gelelim inşallah
+    </div>
+  </div>
+  <div>
+    <div class="cake">
+      <div class="candle"><div class="flame" id="flame"></div></div>
+    </div>
+    <button onclick="blowCandles()">Mumları Üfle 🎂</button>
+  </div>
+</div>
+
+<script>
+function blowCandles() {
+  const flame = document.getElementById('flame');
+  flame.style.display = 'none';
+  alert('🎉 Mumlar söndü Meleğim 🎂');
+}
+
+function createHeartsAndFlowers() {
+  for (let i = 0; i < 15; i++) {
+    const el = document.createElement('div');
+    el.className = Math.random() > 0.5 ? 'heart' : 'flower';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = 4 + Math.random() * 4 + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 8000);
+  }
+}
+setInterval(createHeartsAndFlowers, 1500);
+</script>
+</body>
+</html>
